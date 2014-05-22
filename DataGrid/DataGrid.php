@@ -1198,6 +1198,7 @@ class DataGrid implements DataGridInterface
         $data['groupingViewOptions'] = $this->getGroupingViewOptions();
         $data['rowNumbersEnabled'] = $this->isRowNumbersEnabled();
         $data['sortableEnabled'] = $this->isSortableEnabled();
+        $data['scrollEnabled'] = $this->isScrollEnabled();
         $data['searchOptions'] = $this->getSearchOptions();
         $data['searchBtnEnabled'] = $this->isSearchButtonEnabled();
         $data['addBtnEnabled'] = $this->isAddButtonEnabled();

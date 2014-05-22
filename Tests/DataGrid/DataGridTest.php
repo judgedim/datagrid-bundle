@@ -327,6 +327,17 @@ class DataGridTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('sortableEnabled', $dataGrid->exportOptions());
         $this->assertFalse($dataGrid->isSearchButtonEnabled());
     }
+
+
+    public function testScroll()
+    {
+        $dataGrid = $this->createDataGrid();
+        $this->assertFalse($dataGrid->isScrollEnabled());
+        $dataGrid->enableScroll(true);
+        $this->assertTrue($dataGrid->isScrollEnabled());
+        $this->assertArrayHasKey('scrollEnabled', $dataGrid->exportOptions());
+    }
+
     
     public function testSearchBtn()
     {
