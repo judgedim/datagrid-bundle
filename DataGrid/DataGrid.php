@@ -132,6 +132,11 @@ class DataGrid implements DataGridInterface
      * @var boolean
      */
     protected $sortableEnabled = false;
+
+    /**
+     * @var boolean
+     */
+    protected $scrollEnabled = false;
     
     /**
      * @var array | null
@@ -721,6 +726,26 @@ class DataGrid implements DataGridInterface
     public function isSortableEnabled()
     {
         return $this->sortableEnabled;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::enableScroll()
+     */
+    public function enableScroll($bool)
+    {
+        $this->scrollEnabled = (bool) $bool;
+
+        return $this;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::isScrollEnabled()
+     */
+    public function isScrollEnabled()
+    {
+        return $this->scrollEnabled;
     }
     
     /**

@@ -180,7 +180,7 @@ jQuery(document).ready(function(){
             toolbar: [options.massActionsEnabled, "top"],
             forceFit: options.forceFit,
             shrinkToFit: options.shrinkToFit,
-            scroll:options.sortableEnabled,
+            scroll: options.scrollEnabled,
             gridview: true
         });
         

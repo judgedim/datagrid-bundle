@@ -447,6 +447,24 @@ interface DataGridInterface
      * @return boolean
      */
     public function isSortableEnabled ();
+
+    /**
+     * Enables scroll for jqgrid
+     *
+     * Provides a fluent interface
+     *
+     * @param boolean $bool
+     * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
+     * @throws \RuntimeException
+     */
+    public function enableScroll ($bool);
+
+    /**
+     * Checks if scroll is enabled
+     *
+     * @return boolean
+     */
+    public function isScrollEnabled ();
     
     /**
      * Sets soptions for jqgrid

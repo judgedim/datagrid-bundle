@@ -68,7 +68,7 @@ class DataGridHandler extends AbstractDataGridHandler
         
         // Getting count
         $paginator = new Paginator($this->getQuery());
-        //$paginator->setUseOutputWalkers(false);
+        $paginator->setUseOutputWalkers(false);
         $this->setCount($paginator->count());
         
         return $this;
