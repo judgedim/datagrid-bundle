@@ -137,7 +137,7 @@ class DataGrid implements DataGridInterface
      * @var boolean
      */
     protected $scrollEnabled = false;
-    
+
     /**
      * @var array | null
      */
@@ -147,6 +147,16 @@ class DataGrid implements DataGridInterface
      * @var boolean
      */
     protected $searchBtnEnabled = false;
+
+    /**
+     * @var array | null
+     */
+    protected $filterToolbarOptions = array();
+
+    /**
+     * @var boolean
+     */
+    protected $filterToolbarEnabled = false;
 
     /**
      * @var boolean 
@@ -798,6 +808,46 @@ class DataGrid implements DataGridInterface
 
     /**
      * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::setFilterToolbarOptions()
+     */
+    public function setFilterToolbarOptions(array $filterToolbarOptions)
+    {
+        $this->filterToolbarOptions = $filterToolbarOptions;
+
+        return $this;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::getFilterToolbarOptions()
+     */
+    public function getFilterToolbarOptions()
+    {
+        return $this->filterToolbarOptions;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::enableFilterToolbar()
+     */
+    public function enableFilterToolbar($bool)
+    {
+        $this->filterToolbarEnabled = (bool) $bool;
+
+        return $this;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::isFilterToolbarEnabled()
+     */
+    public function isFilterToolbarEnabled()
+    {
+        return $this->filterToolbarEnabled;
+    }
+
+    /**
+     * (non-PHPdoc)
      * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::enableAddButton()
      */
     public function enableAddButton($bool)
@@ -1201,6 +1251,8 @@ class DataGrid implements DataGridInterface
         $data['scrollEnabled'] = $this->isScrollEnabled();
         $data['searchOptions'] = $this->getSearchOptions();
         $data['searchBtnEnabled'] = $this->isSearchButtonEnabled();
+        $data['filterToolbarOptions'] = $this->getFilterToolbarOptions();
+        $data['filterToolbarEnabled'] = $this->isFilterToolbarEnabled();
         $data['addBtnEnabled'] = $this->isAddButtonEnabled();
         $data['addBtnUri'] = $this->getAddBtnUri();
         $data['editBtnEnabled'] = $this->isEditButtonEnabled();

@@ -502,6 +502,41 @@ interface DataGridInterface
     public function isSearchButtonEnabled ();
 
     /**
+     * Sets filter toolbar setting for jqgrid
+     *
+     * Provides a fluent interface
+     *
+     * @param array $filterToolbarOptions
+     * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
+     * @throws \InvalidArgumentException
+     */
+    public function setFilterToolbarOptions(array $filterToolbarOptions);
+
+    /**
+     * Gets filter toolbar setting for jqgrid
+     *
+     * @return array
+     */
+    public function getFilterToolbarOptions();
+
+    /**
+     * Enables filter toolbar
+     *
+     * Provides a fluent interface
+     *
+     * @param boolean $bool
+     * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
+     */
+    public function enableFilterToolbar ($bool);
+
+    /**
+     * Checks if filter toolbar is enabled
+     *
+     * @return boolean
+     */
+    public function isFilterToolbarEnabled ();
+
+    /**
      * Enables add button
      *
      * Provides a fluent interface

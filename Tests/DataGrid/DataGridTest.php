@@ -424,8 +424,29 @@ class DataGridTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('massActions', $dataGrid->exportOptions());
         $this->assertTrue($dataGrid->isMultiSelectEnabled());
     }
-    
-    
+
+    public function testFilterToolbarOptions()
+    {
+        $filterToolbarOptions = array('searchOnEnter' => false, 'stringResult' => true);
+
+        $dataGrid = $this->createDataGrid();
+        $this->assertFalse($dataGrid->isFilterToolbarEnabled());
+        $this->assertEmpty($dataGrid->getFilterToolbarOptions());
+
+        $dataGrid->enableFilterToolbar(true);
+        $dataGrid->setFilterToolbarOptions($filterToolbarOptions);
+
+        $this->assertTrue($dataGrid->isFilterToolbarEnabled());
+
+        $this->assertSame(
+            $filterToolbarOptions,
+            $dataGrid->getFilterToolbarOptions()
+        );
+
+        $this->assertArrayHasKey('filterToolbarEnabled', $dataGrid->exportOptions());
+        $this->assertArrayHasKey('filterToolbarOptions', $dataGrid->exportOptions());
+    }
+
     public function testDependentGrid()
     {
         $grids =  array('grid1', 'grid2');

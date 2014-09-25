@@ -199,7 +199,7 @@ jQuery(document).ready(function(){
                 search:options.searchBtnEnabled, 
                 edit:options.editBtnEnabled,
                 add:options.addBtnEnabled,
-                del:options.deleteBtnEnabled,               
+                del:options.deleteBtnEnabled
             },
             {
             	width: 600, // fix twitter-bootstrap
@@ -219,7 +219,7 @@ jQuery(document).ready(function(){
                     }
 
                     return [success,message,id];
-                },
+                }
                 
             },
             {
@@ -241,7 +241,7 @@ jQuery(document).ready(function(){
                         }
             		
             		return [success,message,id];
-            	},
+            	}
             	
             },
             {},
@@ -259,6 +259,11 @@ jQuery(document).ready(function(){
             }
         	
         });
+
+        /** Initializing filter toolbar */
+        if(options.filterToolbarEnabled) {
+            jqgrid.jqGrid('filterToolbar', options.filterToolbarOptions);
+        }
     
         // custom buttons
         addCustomButtons(jqgrid, navGrid, pager, options);
@@ -506,7 +511,7 @@ function addCustomButtons(jqgrid, navGrid, pager, options)
                 } else {
                     jQuery('<div></div>').html(options.custom_button_dlg_body).dialog({ 
                         'title' : options.custom_button_dlg_title,
-                        'modal' : true,
+                        'modal' : true
                     });
                 }
 
