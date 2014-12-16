@@ -571,6 +571,23 @@ interface DataGridInterface
     public function getAddBtnUri ();
 
     /**
+     * Sets add uri
+     *
+     * Provides a fluent interface
+     *
+     * @param string $uri
+     * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
+     */
+    public function setAddUri($uri);
+
+    /**
+     * Gets add uri
+     *
+     * @return string
+     */
+    public function getAddUri();
+
+    /**
      * Enables edit button
      *
      * Provides a fluent interface
@@ -605,6 +622,23 @@ interface DataGridInterface
     public function getEditBtnUri ();
 
     /**
+     * Sets edit uri
+     *
+     * Provides a fluent interface
+     *
+     * @param string $uri
+     * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
+     */
+    public function setEditUri($uri);
+
+    /**
+     * Gets edit uri
+     *
+     * @return string
+     */
+    public function getEditUri();
+
+    /**
      * Enabled delete button
      *
      * Provides a fluent interface
@@ -622,22 +656,41 @@ interface DataGridInterface
     public function isDeleteButtonEnabled ();
 
     /**
-     * Sets detele button uri
+     * Sets delete button uri
      *
      * Provides a fluent interface
      *
-     * @param string $route            
+     * @param string $uri
+     *
      * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
      */
-    public function setDeleteBtnUri ($uri);
+    public function setDeleteBtnUri($uri);
 
     /**
      * Gets delete button uri
      *
      * @return string
      */
-    public function getDeleteBtnUri ();
-    
+    public function getDeleteBtnUri();
+
+    /**
+     * Sets delete uri
+     *
+     * Provides a fluent interface
+     *
+     * @param string $uri
+     *
+     * @return \Thrace\DataGridBundle\DataGrid\DataGridInterface
+     */
+    public function setDeleteUri($uri);
+
+    /**
+     * Gets delete uri
+     *
+     * @return string
+     */
+    public function getDeleteUri();
+
     /**
      * Enables jqgrid multi select option
      * 

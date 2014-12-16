@@ -203,6 +203,11 @@ jQuery(document).ready(function(){
             },
             {
             	width: 600, // fix twitter-bootstrap
+                gridId: datagridId,
+                url: (options.editUri != null) ? options.editUri : options.row_action_url,
+                onclickSubmit: function(params, postdata) {
+                    params.url = generateUrl(params.url, postdata[params.gridId + '_id']);
+                },
                 afterSubmit : function(response, postdata){
                     if(response.status != 200){
                         alert('Server error: ' + response.status);
@@ -224,6 +229,7 @@ jQuery(document).ready(function(){
             },
             {
             	width: 600, // fix twitter-bootstrap
+                url: (options.addUri != null) ? options.addUri : options.row_action_url,
             	afterSubmit : function(response, postdata){
             		
             		if(response.status != 200){
@@ -244,7 +250,13 @@ jQuery(document).ready(function(){
             	}
             	
             },
-            {},
+            {
+                gridId: datagridId,
+                url: (options.deleteUri != null) ? options.deleteUri : options.row_action_url,
+                onclickSubmit: function(params, postdata) {
+                    params.url = generateUrl(params.url, postdata);
+                }
+            },
             {
                 sopt:options.searchOptions, 
                 multipleSearch:true, 
@@ -522,4 +534,15 @@ function addCustomButtons(jqgrid, navGrid, pager, options)
         
     });
 
+}
+
+/**
+ *
+ * @param string path
+ * @param int|string id
+ * @returns string
+ */
+function generateUrl(path, id)
+{
+    return path.replace('{id}', id)
 }

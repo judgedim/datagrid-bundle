@@ -187,6 +187,21 @@ class DataGrid implements DataGridInterface
      * @var string
      */
     protected $deleteBtnUri = null;
+
+    /**
+     * @var string
+     */
+    protected $addUri = null;
+
+    /**
+     * @var string
+     */
+    protected $editUri = null;
+
+    /**
+     * @var string
+     */
+    protected $deleteUri = null;
     
     /**
      * @var boolean
@@ -888,6 +903,26 @@ class DataGrid implements DataGridInterface
 
     /**
      * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::setAddUri()
+     */
+    public function setAddUri($uri)
+    {
+        $this->addUri = (string) $uri;
+
+        return $this;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::getAddUri()
+     */
+    public function getAddUri()
+    {
+        return $this->addUri;
+    }
+
+    /**
+     * (non-PHPdoc)
      * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::enableEditButton()
      */
     public function enableEditButton($bool)
@@ -924,6 +959,26 @@ class DataGrid implements DataGridInterface
     public function getEditBtnUri()
     {
         return $this->editBtnUri;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::setEditUri()
+     */
+    public function setEditUri($uri)
+    {
+        $this->editUri = (string) $uri;
+
+        return $this;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::getEditUri()
+     */
+    public function getEditUri()
+    {
+        return $this->editUri;
     }
 
     /**
@@ -965,7 +1020,27 @@ class DataGrid implements DataGridInterface
     {
         return $this->deleteBtnUri;
     }
-    
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::setDeleteUri()
+     */
+    public function setDeleteUri($uri)
+    {
+        $this->deleteUri = (string) $uri;
+
+        return $this;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Thrace\DataGridBundle\DataGrid.DataGridInterface::getDeleteUri()
+     */
+    public function getDeleteUri()
+    {
+        return $this->deleteUri;
+    }
+
     /**
      * (non-PHPdoc)
      * @see \Thrace\DataGridBundle\DataGrid\DataGridInterface::enableMultiSelect()
@@ -1258,6 +1333,9 @@ class DataGrid implements DataGridInterface
         $data['editBtnEnabled'] = $this->isEditButtonEnabled();
         $data['editBtnUri'] = $this->getEditBtnUri();
         $data['deleteBtnEnabled'] = $this->isDeleteButtonEnabled();
+        $data['deleteUri'] = $this->getDeleteUri();
+        $data['addUri'] = $this->getAddUri();
+        $data['editUri'] = $this->getEditUri();
         $data['deleteBtnUri'] = $this->getDeleteBtnUri();
         $data['multiselect'] = $this->isMultiSelectEnabled();
         $data['massActionsEnabled'] = $this->isMassActionsEnabled();
