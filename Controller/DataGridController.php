@@ -40,7 +40,7 @@ class DataGridController extends ContainerAware
     
     /**
      * @param string $name
-     * @return Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dataAction ($name)
     {

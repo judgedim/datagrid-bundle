@@ -498,37 +498,39 @@ function buildErrorMessages(errors)
  * @param options
  */
 function addCustomButtons(jqgrid, navGrid, pager, options)
-{   
+{
+    var onClickButtonDefault= function(){
+        var id = jqgrid.jqGrid('getGridParam','selrow');
+        selectedRow = jqgrid.getRowData(id);
+
+        if(id != null && selectedRow != null){
+            var rowData = jQuery.extend({'id': id}, selectedRow);
+            var uri = decodeURIComponent(v.uri);
+
+            jQuery.each(rowData, function(k,v){
+                uri = uri.replace('{' + k + '}', v);
+            });
+
+            window.location = uri;
+
+        } else {
+            jQuery('<div></div>').html(options.custom_button_dlg_body).dialog({
+                'title' : options.custom_button_dlg_title,
+                'modal' : true
+            });
+        }
+
+        return false;
+    };
 
     jQuery.each(options.customButtons, function(k,v){
-        
+        var onClickButton = (typeof(v.onClickButton) == "function") ? v.onClickButton : onClickButtonDefault;
+
         navGrid.navButtonAdd(pager,{
             caption:v.caption, 
             title:v.title, 
             buttonicon: v.buttonicon, 
-            onClickButton: function(){ 
-                var id = jqgrid.jqGrid('getGridParam','selrow');
-                selectedRow = jqgrid.getRowData(id);
-
-                if(id != null && selectedRow != null){ 
-                    var rowData = jQuery.extend({'id': id}, selectedRow);
-                    var uri = decodeURIComponent(v.uri);
-
-                    jQuery.each(rowData, function(k,v){
-                        uri = uri.replace('{' + k + '}', v);
-                    });
-
-                    window.location = uri;
-
-                } else {
-                    jQuery('<div></div>').html(options.custom_button_dlg_body).dialog({ 
-                        'title' : options.custom_button_dlg_title,
-                        'modal' : true
-                    });
-                }
-
-                return false;
-            }, 
+            onClickButton: onClickButton,
             position:v.position
         });
         
